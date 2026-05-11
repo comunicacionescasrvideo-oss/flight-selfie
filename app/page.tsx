@@ -10,6 +10,7 @@ export default function Home() {
 
   const [photo, setPhoto] = useState<string | null>(null);
   const [mensaje, setMensaje] = useState("");
+  const [cameraActive, setCameraActive] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
 
   const startCamera = async () => {
@@ -20,6 +21,7 @@ export default function Home() {
     if (videoRef.current) {
       videoRef.current.srcObject = stream;
     }
+    setCameraActive(true);
   };
 
   const takePhoto = () => {
@@ -38,6 +40,12 @@ export default function Home() {
     const data = canvas.toDataURL("image/jpeg", 0.8);
 
     setPhoto(data);
+    setTimeout(() => {
+  window.scrollBy({
+    top: 420,
+    behavior: "smooth",
+  });
+}, 250);
   };
 
   const sendPhoto = async () => {
@@ -281,9 +289,19 @@ export default function Home() {
 
 <div style={buttonContainer}>
   <button
-    onClick={startCamera}
-    style={buttonStyle}
-  >
+  onClick={startCamera}
+  style={{
+    ...buttonStyle,
+
+    background: cameraActive
+      ? "#0A2342"
+      : buttonStyle.background,
+
+    border: cameraActive
+      ? "1px solid rgba(255,255,255,0.35)"
+      : buttonStyle.border,
+  }}
+>
     Activar cámara
   </button>
 
@@ -321,11 +339,17 @@ export default function Home() {
   style={{
     ...buttonStyle,
 
-    opacity: isUploading ? 0.6 : 1,
+    background: `
+      linear-gradient(
+        180deg,
+        #123C6B,
+        #0A2342
+      )
+    `,
 
-    transform: isUploading
-      ? "scale(0.98)"
-      : "scale(1)",
+    border: "1px solid rgba(255,255,255,0.18)",
+
+    opacity: isUploading ? 0.6 : 1,
   }}
 >
       Enviar foto
