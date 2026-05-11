@@ -42,10 +42,11 @@ export default function Home() {
     setPhoto(data);
     setTimeout(() => {
   window.scrollBy({
-    top: 420,
+    top: 720,
+
     behavior: "smooth",
   });
-}, 250);
+}, 180);
   };
 
   const sendPhoto = async () => {
