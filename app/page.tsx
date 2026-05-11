@@ -688,9 +688,16 @@ const mediaStyle = {
 
 const buttonContainer = {
   display: "flex",
-  gap: 12,
+
+  flexDirection: "column" as const,
+
+  gap: 14,
+
   justifyContent: "center",
-  flexWrap: "wrap" as const,
+
+  alignItems: "center",
+
+  width: "100%",
 };
 
 const buttonStyle = {
@@ -701,14 +708,16 @@ const buttonStyle = {
   border: "1px solid rgba(255,255,255,0.18)",
 
   background: `
-  linear-gradient(
-    180deg,
-    rgba(255,255,255,0.30),
-    rgba(255,255,255,0.12)
-  )
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.30),
+      rgba(255,255,255,0.12)
+    )
   `,
 
   backdropFilter: "blur(18px)",
+
+  WebkitBackdropFilter: "blur(18px)",
 
   color: "#ffffff",
 
@@ -727,7 +736,9 @@ const buttonStyle = {
 
   transition: "all 0.3s ease",
 
-  WebkitBackdropFilter: "blur(18px)",
+  width: "100%",
+
+  maxWidth: "260px",
 };
 
 const successMessage = {
