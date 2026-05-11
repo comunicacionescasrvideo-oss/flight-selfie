@@ -82,9 +82,23 @@ export default function Home() {
           position: "relative",
         }}
       >
-        <FloatingCloud style={cloudOne} />
-        <FloatingCloud style={cloudTwo} />
-        <FloatingCloud style={cloudThree} />
+        <img
+  src="/clouds/cloud-back.png"
+  alt=""
+  style={realCloudBack}
+/>
+
+<img
+  src="/clouds/cloud-mid.png"
+  alt=""
+  style={realCloudMid}
+/>
+
+<img
+  src="/clouds/cloud-front.png"
+  alt=""
+  style={realCloudFront}
+/>
         <div style={particleOne}></div>
 <div style={particleTwo}></div>
 <div style={particleThree}></div>
@@ -188,7 +202,34 @@ export default function Home() {
             size={700}
             color="rgba(255,255,255,0.15)"
           />
+<img
+  src="/clouds/cloud-mid.png"
+  alt=""
+  style={{
+    position: "absolute",
+    width: "1100px",
+    bottom: -100,
+    right: -200,
+    opacity: 0.14,
+    pointerEvents: "none",
+    animation: "cloudMove 120s ease-in-out infinite alternate",
+    filter: "blur(2px)",
+  }}
+/>
 
+<img
+  src="/clouds/cloud-front.png"
+  alt=""
+  style={{
+    position: "absolute",
+    width: "1200px",
+    top: -100,
+    left: -300,
+    opacity: 0.10,
+    pointerEvents: "none",
+    animation: "cloudMove 150s ease-in-out infinite alternate",
+  }}
+/>
           <div style={contentStyle}>
             <p style={miniText}>
               SELFIE EXPERIENCE
@@ -296,7 +337,18 @@ export default function Home() {
                 letterSpacing: 4,
               }}
             >
-              ✈️ SEE YOU SOON
+              ✈️ ¡Súbete al Viaje!
+              <div
+  style={{
+    marginTop: 30,
+    fontSize: 11,
+    opacity: 0.7,
+color: "#0A2342",
+    letterSpacing: 2,
+  }}
+>
+  Sitio creado por: Unidad de Comunicaciones / Comunicaciones Airline
+</div>
             </div>
           </div>
         </section>
@@ -582,43 +634,39 @@ const successMessage = {
   opacity: 0.95,
 };
 
-const cloudOne = {
+const realCloudBack = {
   position: "fixed" as const,
-  top: 120,
-  left: -120,
-  width: 700,
-  height: 220,
-  background: "rgba(255,255,255,0.12)",
-  borderRadius: 999,
-  filter: "blur(80px)",
-  mixBlendMode: "screen" as const,
+  top: 40,
+  left: -200,
+  width: "1400px",
+  opacity: 0.22,
+  pointerEvents: "none" as const,
   zIndex: 0,
+  animation: "cloudMove 90s ease-in-out infinite alternate",
+  filter: "blur(2px)",
 };
 
-const cloudTwo = {
+const realCloudMid = {
   position: "fixed" as const,
-  top: 340,
-  right: -100,
-  width: 820,
-  height: 260,
-  background: "rgba(185,231,255,0.10)",
-  borderRadius: 999,
-  filter: "blur(90px)",
-  mixBlendMode: "screen" as const,
+  top: 260,
+  right: -250,
+  width: "1200px",
+  opacity: 0.30,
+  pointerEvents: "none" as const,
   zIndex: 0,
+  animation: "cloudMove 120s ease-in-out infinite alternate",
+  filter: "blur(1px)",
 };
 
-const cloudThree = {
+const realCloudFront = {
   position: "fixed" as const,
-  bottom: 120,
-  left: 100,
-  width: 520,
-  height: 180,
-  background: "rgba(255,231,163,0.08)",
-  borderRadius: 999,
-  filter: "blur(100px)",
-  mixBlendMode: "screen" as const,
+  bottom: -40,
+  left: -100,
+  width: "1500px",
+  opacity: 0.18,
+  pointerEvents: "none" as const,
   zIndex: 0,
+  animation: "cloudMove 140s ease-in-out infinite alternate",
 };
 const particleOne = {
   position: "fixed" as const,
