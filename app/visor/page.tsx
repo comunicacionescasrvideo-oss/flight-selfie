@@ -180,7 +180,7 @@ height: 250,
 
   margin: "40px auto 20px auto",
 
-  padding: 14,
+  padding: 8,
 
   background: `
     linear-gradient(
@@ -195,11 +195,10 @@ height: 250,
   position: "relative" as const,
 
   boxShadow: `
-    inset 0 2px 12px rgba(255,255,255,0.85),
-    inset 0 -18px 30px rgba(0,0,0,0.12),
-    0 25px 80px rgba(0,0,0,0.28),
-    0 0 80px rgba(255,255,255,0.10)
-  `,
+  inset 0 2px 8px rgba(255,255,255,0.65),
+  inset 0 -10px 18px rgba(0,0,0,0.12),
+  0 10px 24px rgba(0,0,0,0.18)
+`,
 
   backdropFilter: "blur(10px)",
 };
@@ -208,7 +207,7 @@ const visorWindowInner = {
   width: "100%",
   height: "100%",
 
-  borderRadius: "140px 140px 105px 105px",
+  borderRadius: "142px 142px 108px 108px",
 
   overflow: "hidden",
 
