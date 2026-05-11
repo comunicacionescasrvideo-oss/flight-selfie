@@ -55,7 +55,7 @@ export default function Home() {
     <>
       <main
         style={{
-          scrollSnapType: "y mandatory",
+          scrollSnapType: "y proximity",
           overflowY: "scroll",
           height: "100vh",
           scrollBehavior: "smooth",
@@ -231,28 +231,41 @@ export default function Home() {
   }}
 />
           <div style={contentStyle}>
-            <p style={miniText}>
-              SELFIE EXPERIENCE
-            </p>
+            <p
+  style={{
+    fontSize: 14,
+    letterSpacing: 4,
+    opacity: 0.75,
+    marginBottom: 10,
+  }}
+>
+  realiza tu
+</p>
 
-            <h2 style={cameraTitle}>
-              Tu momento ✈️
-            </h2>
-
-            <p style={textStyle}>
-              Prepárate para ser parte de esta experiencia.
-            </p>
+<h2
+  style={{
+    fontSize: "clamp(3rem, 9vw, 5rem)",
+    lineHeight: 0.9,
+    fontWeight: 700,
+    letterSpacing: "-0.05em",
+    marginBottom: 24,
+  }}
+>
+  CHECK-IN
+</h2>
 
             <div style={cameraFrame}>
   <div style={windowInner}>
     <div style={windowShade}></div>
     <div style={windowHandle}></div>
-    <video
-      ref={videoRef}
-      autoPlay
-      playsInline
-      style={mediaStyle}
-    />
+    {!photo && (
+  <video
+    ref={videoRef}
+    autoPlay
+    playsInline
+    style={mediaStyle}
+  />
+)}
   </div>
 </div>
 
@@ -281,6 +294,9 @@ export default function Home() {
   <>
     <div style={cameraFrame}>
       <div style={windowInner}>
+      <div style={windowShade}></div>
+
+<div style={windowHandle}></div>
         <img
           src={photo}
           alt="selfie"
@@ -298,24 +314,7 @@ export default function Home() {
   </>
 )}
 
-            {photo && (
-              <>
-                <div style={cameraFrame}>
-                  <img
-                    src={photo}
-                    alt="selfie"
-                    style={mediaStyle}
-                  />
-                </div>
-
-                <button
-                  onClick={sendPhoto}
-                  style={buttonStyle}
-                >
-                  Enviar foto
-                </button>
-              </>
-            )}
+            
 
             {mensaje && (
               <div style={successMessage}>
@@ -505,7 +504,7 @@ paddingTop: "120px",
 
 const cameraSection = {
   minHeight: "100vh",
-  scrollSnapAlign: "start" as const,
+  scrollSnapAlign: "none" as const,
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -513,7 +512,7 @@ const cameraSection = {
   overflow: "hidden",
   marginTop: "-120px",
 paddingTop: "120px",
-  padding: "60px 20px",
+  padding: "20px",
 };
 
 const contentStyle = {
@@ -701,7 +700,7 @@ const buttonContainer = {
 };
 
 const buttonStyle = {
-  padding: "16px 30px",
+  padding: "11px 22px",
 
   borderRadius: 999,
 
