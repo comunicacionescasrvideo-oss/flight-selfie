@@ -10,6 +10,7 @@ export default function Home() {
 
   const [photo, setPhoto] = useState<string | null>(null);
   const [mensaje, setMensaje] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
 
   const startCamera = async () => {
     const stream = await navigator.mediaDevices.getUserMedia({
@@ -40,16 +41,20 @@ export default function Home() {
   };
 
   const sendPhoto = async () => {
-    if (!photo) return;
+  if (!photo || isUploading) return;
 
-    const fileName = `selfies/${Date.now()}.jpg`;
+  setIsUploading(true);
 
-    const storageRef = ref(storage, fileName);
+  const fileName = `selfies/${Date.now()}.jpg`;
 
-    await uploadString(storageRef, photo, "data_url");
+  const storageRef = ref(storage, fileName);
 
-    setMensaje("✨ Ya eres parte de este viaje");
-  };
+  await uploadString(storageRef, photo, "data_url");
+
+  setMensaje("✨ Ya eres parte de este viaje");
+
+  setIsUploading(false);
+};
 
   return (
     <>
@@ -148,7 +153,12 @@ export default function Home() {
           />
 
           <div style={contentStyle}>
-            <h2 style={titleStyle}>
+            <h2
+  style={{
+    ...titleStyle,
+    marginTop: 0,
+  }}
+>
               Hay viajes que comienzan mucho antes de despegar
             </h2>
 
@@ -306,9 +316,18 @@ export default function Home() {
     </div>
 
     <button
-      onClick={sendPhoto}
-      style={buttonStyle}
-    >
+  onClick={sendPhoto}
+  disabled={isUploading}
+  style={{
+    ...buttonStyle,
+
+    opacity: isUploading ? 0.6 : 1,
+
+    transform: isUploading
+      ? "scale(0.98)"
+      : "scale(1)",
+  }}
+>
       Enviar foto
     </button>
   </>
@@ -337,9 +356,7 @@ export default function Home() {
               maxWidth: 850,
             }}
           >
-            <p style={miniText}>
-              THE JOURNEY BEGINS
-            </p>
+
 
             <h2 style={titleStyle}>
               Gracias por ser parte
@@ -733,11 +750,12 @@ const buttonStyle = {
     0 0 30px rgba(255,211,107,0.10)
   `,
 
-  transition: "all 0.3s ease",
+  transition: "all 0.15s ease",
 
   width: "100%",
 
   maxWidth: "260px",
+  touchAction: "manipulation",
 };
 
 const successMessage = {
