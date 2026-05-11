@@ -7,6 +7,7 @@ import { storage } from "./lib/firebase";
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const previewRef = useRef<HTMLDivElement>(null);
 
   const [photo, setPhoto] = useState<string | null>(null);
   const [mensaje, setMensaje] = useState("");
@@ -41,12 +42,11 @@ export default function Home() {
 
     setPhoto(data);
     setTimeout(() => {
-  window.scrollBy({
-    top: 720,
-
+  previewRef.current?.scrollIntoView({
     behavior: "smooth",
+    block: "center",
   });
-}, 180);
+}, 250);
   };
 
   const sendPhoto = async () => {
@@ -321,7 +321,10 @@ export default function Home() {
 
 {photo && (
   <>
-    <div style={cameraFrame}>
+    <div
+  ref={previewRef}
+  style={cameraFrame}
+>
       <div style={windowInner}>
       <div style={windowShade}></div>
 
