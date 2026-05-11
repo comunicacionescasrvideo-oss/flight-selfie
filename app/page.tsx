@@ -244,34 +244,59 @@ export default function Home() {
             </p>
 
             <div style={cameraFrame}>
-              <video
-                ref={videoRef}
-                autoPlay
-                playsInline
-                style={mediaStyle}
-              />
-            </div>
+  <div style={windowInner}>
+    <div style={windowShade}></div>
+    <div style={windowHandle}></div>
+    <video
+      ref={videoRef}
+      autoPlay
+      playsInline
+      style={mediaStyle}
+    />
+  </div>
+</div>
 
-            <div style={buttonContainer}>
-              <button
-                onClick={startCamera}
-                style={buttonStyle}
-              >
-                Activar cámara
-              </button>
+<div style={buttonContainer}>
+  <button
+    onClick={startCamera}
+    style={buttonStyle}
+  >
+    Activar cámara
+  </button>
 
-              <button
-                onClick={takePhoto}
-                style={buttonStyle}
-              >
-                Tomar foto
-              </button>
-            </div>
+  <button
+    onClick={takePhoto}
+    style={buttonStyle}
+  >
+    Tomar foto
+  </button>
+</div>
 
-            <canvas
-              ref={canvasRef}
-              style={{ display: "none" }}
-            />
+<canvas
+  ref={canvasRef}
+  style={{ display: "none" }}
+/>
+
+{photo && (
+  <>
+    <div style={cameraFrame}>
+      <div style={windowInner}>
+        <img
+          src={photo}
+          alt="selfie"
+          style={mediaStyle}
+        />
+      </div>
+    </div>
+
+    <button
+      onClick={sendPhoto}
+      style={buttonStyle}
+    >
+      Enviar foto
+    </button>
+  </>
+)}
 
             {photo && (
               <>
@@ -565,23 +590,100 @@ const cameraTitle = {
   marginBottom: 20,
   textShadow: "0 10px 30px rgba(0,0,0,0.14)",
 };
-
 const cameraFrame = {
-  width: 280,
-  height: 360,
-  borderRadius: "140px 140px 110px 110px",
+  width: 300,
+  height: 390,
+
+  borderRadius: "160px 160px 120px 120px",
+
   overflow: "hidden",
-  border: "6px solid rgba(255,255,255,0.45)",
+
   margin: "40px auto 20px auto",
-  background: "#000",
-  boxShadow: "0 20px 100px rgba(255,255,255,0.15)",
+
+  padding: 14,
+
+  background: `
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.95),
+      rgba(215,225,240,0.92)
+    )
+  `,
+
+  border: "1px solid rgba(255,255,255,0.45)",
+
+  position: "relative" as const,
+
+  boxShadow: `
+    inset 0 2px 12px rgba(255,255,255,0.85),
+    inset 0 -18px 30px rgba(0,0,0,0.12),
+    0 25px 80px rgba(0,0,0,0.28),
+    0 0 80px rgba(255,255,255,0.10)
+  `,
+
   backdropFilter: "blur(10px)",
 };
-
-const mediaStyle = {
+const windowInner = {
   width: "100%",
   height: "100%",
+
+  borderRadius: "140px 140px 105px 105px",
+
+  overflow: "hidden",
+
+  background: "#000",
+
+  border: "10px solid rgba(210,220,235,0.55)",
+
+  boxShadow: `
+    inset 0 12px 25px rgba(255,255,255,0.28),
+    inset 0 -18px 30px rgba(0,0,0,0.40),
+    inset 0 0 20px rgba(0,0,0,0.30)
+  `,
+};
+const windowShade = {
+  position: "absolute" as const,
+
+  top: 14,
+  left: "50%",
+
+  transform: "translateX(-50%)",
+
+  width: "84%",
+  height: "58px",
+
+  borderRadius: "18px 18px 12px 12px",
+
+  background: `
+    linear-gradient(
+      180deg,
+      rgb(236,240,246) 0%,
+      rgb(214,221,232) 45%,
+      rgb(188,198,212) 100%
+    )
+  `,
+
+  border: "1px solid rgba(255,255,255,0.75)",
+
+  boxShadow: `
+  inset 0 2px 6px rgba(255,255,255,0.55),
+  inset 0 -8px 14px rgba(0,0,0,0.22),
+  0 14px 24px rgba(0,0,0,0.28),
+  0 4px 10px rgba(0,0,0,0.12)
+`,
+
+  zIndex: 4,
+};
+const mediaStyle = {
+  width: "100%",
+
   objectFit: "cover" as const,
+
+  transform: "scale(1.08)",
+
+  marginTop: "58px",
+
+  height: "calc(100% - 58px)",
 };
 
 const buttonContainer = {
@@ -705,4 +807,32 @@ const particleThree = {
   boxShadow: "0 0 22px rgba(185,231,255,0.45)",
   animation: "particleFloat 14s ease-in-out infinite",
   zIndex: 1,
+};
+const windowHandle = {
+  position: "absolute" as const,
+
+  top: 50,
+  left: "50%",
+
+  transform: "translateX(-50%)",
+
+  width: "36px",
+  height: "8px",
+
+  borderRadius: "999px",
+
+  background: `
+    linear-gradient(
+      180deg,
+      rgb(150,160,172),
+      rgb(112,120,132)
+    )
+  `,
+
+  boxShadow: `
+    inset 0 1px 2px rgba(255,255,255,0.35),
+    0 1px 4px rgba(0,0,0,0.25)
+  `,
+
+  zIndex: 5,
 };
