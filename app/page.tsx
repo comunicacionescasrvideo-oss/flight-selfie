@@ -433,7 +433,17 @@ export default function Home() {
         </section>
 
         {/* CIERRE */}
-        <section style={sectionStyle}>
+        <section
+  style={{
+    ...sectionStyle,
+
+    minHeight: "100vh",
+
+    height: "auto",
+
+    paddingBottom: "120px",
+  }}
+>
           <Glow
             size={900}
             color="rgba(255,211,107,0.10)"
