@@ -138,7 +138,7 @@ export default function Home() {
             }}
           >
             <p style={miniText}>
-              EXPERIENCIA INTERACTIVA
+              Una experiencia diseñada por Comunicaciones Airline
             </p>
 
             <h1 style={heroTitle}>
@@ -149,7 +149,7 @@ export default function Home() {
 
             <p style={heroText}>
               Una experiencia creada para quienes saben
-              que este viaje es mucho más que un sueño.
+              que este viaje, es mucho más que un sueño.
             </p>
           </div>
 
@@ -170,27 +170,10 @@ export default function Home() {
     marginTop: 0,
   }}
 >
-              Hay viajes que comienzan mucho antes de despegar
-            </h2>
-
-            <p style={textStyle}>
-              Cada destino nace primero
-              en la imaginación.
-            </p>
-          </div>
-        </section>
-
-        {/* SECCIÓN 3 */}
-        <section style={sectionStyle}>
-          <Glow
-            size={650}
-            color="rgba(87,183,255,0.10)"
-          />
-
-          <div style={contentStyle}>
-            <h2 style={titleStyle}>
-              Descubrir el mundo también es descubrir nuevas versiones de ti
-            </h2>
+  Todos somos Importantes,
+  <br />
+  Porque este viaje lo hacemos juntos
+</h2>
 
             <p style={textStyle}>
               Hoy comienza una nueva historia.
@@ -207,16 +190,39 @@ export default function Home() {
 
           <div style={contentStyle}>
             <h2 style={titleStyle}>
-              Los grandes momentos
-              comienzan con una decisión
-            </h2>
+  El Sueño de Pacientes,
+  <br />
+  Funcionarios y Vecinos,
+  <br />
+  pronto será realidad
+</h2>
 
             <p style={textStyle}>
-              Y este puede ser el inicio de algo inolvidable.
+              para los de hoy, los de ayer y los de mañana.
             </p>
           </div>
         </section>
+{/* SECCIÓN 4 */}
+<section style={sectionStyle}>
+  <Glow
+    size={700}
+    color="rgba(255,211,107,0.10)"
+  />
 
+  <div style={contentStyle}>
+    <h2 style={titleStyle}>
+      Súbete al viaje
+      <br />
+      del Cambio
+      <br />
+      al nuevo Hospital
+    </h2>
+
+    <p style={textStyle}>
+      El más grande de Chile.
+    </p>
+  </div>
+</section>
         {/* SELFIE */}
         <section style={cameraSection}>
           <Glow
@@ -448,23 +454,45 @@ export default function Home() {
             </h2>
 
             <p style={textStyle}>
-              Muy pronto descubrirás un viaje pensado
-              para inspirar nuevas historias,
-              nuevas emociones y nuevos destinos.
-            </p>
+  Un vuelo.
+  <br />
+  Un viaje.
+  <br />
+  Un destino.
+  <br />
+  <br />
+  Y varias etapas por cumplir.
+  <br />
+  <br />
+  Ya tenemos los pasajes,
+  <br />
+  y ahora ustedes también
+  <br />
+  son parte de este viaje.
+</p>
 
             <div
               style={{
-                marginTop: 50,
-                opacity: 0.65,
-                fontSize: 14,
-                letterSpacing: 4,
-              }}
+  marginTop: 50,
+
+  opacity: 1,
+
+  fontSize: 22,
+
+  fontWeight: 700,
+
+  color: "#0A2342",
+
+  letterSpacing: 5,
+
+  textShadow:
+    "0 4px 18px rgba(255,255,255,0.18)",
+}}
             >
               ✈️ ¡Súbete al Viaje!
               <div
   style={{
-    marginTop: 30,
+    marginTop: 40,
     fontSize: 11,
     opacity: 0.7,
 color: "#0A2342",
@@ -473,8 +501,39 @@ color: "#0A2342",
 >
   Sitio creado por: Unidad de Comunicaciones / Comunicaciones Airline
 </div>
+<div
+  style={{
+    marginTop: 30,
+    fontSize: 11,
+    opacity: 0.7,
+    color: "#0A2342",
+    letterSpacing: 2,
+  }}
+>
+  Una experiencia diseñada por
+  Comunicaciones Airline
+</div>
+
+<img
+  src="/logo-airline.png"
+  alt="Airline"
+
+  style={{
+    width: "220px",
+
+    display: "block",
+
+    margin: "40px auto 0 auto",
+
+    opacity: 0.95,
+
+    filter:
+      "drop-shadow(0 10px 30px rgba(0,0,0,0.18))",
+  }}
+/>
             </div>
           </div>
+          
         </section>
       </main>
 
