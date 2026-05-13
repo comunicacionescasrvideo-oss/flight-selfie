@@ -26,6 +26,7 @@ export default function Home() {
   };
 
   const takePhoto = () => {
+    if (!cameraActive) return;
     const video = videoRef.current;
     const canvas = canvasRef.current;
 
@@ -61,6 +62,7 @@ export default function Home() {
   await uploadString(storageRef, photo, "data_url");
 
   setMensaje("✨ Ya eres parte de este viaje");
+  setPhoto(null);
 
   setIsUploading(false);
 };
@@ -277,13 +279,70 @@ export default function Home() {
   <div style={windowInner}>
     <div style={windowShade}></div>
     <div style={windowHandle}></div>
-    {!photo && (
+  {!photo && !mensaje && (
   <video
     ref={videoRef}
     autoPlay
     playsInline
     style={mediaStyle}
   />
+)}
+{mensaje && (
+  <div
+    style={{
+      ...mediaStyle,
+
+      display: "flex",
+
+      justifyContent: "center",
+
+      alignItems: "center",
+
+      flexDirection: "column",
+
+      textAlign: "center",
+
+      padding: 30,
+
+      color: "#ffffff",
+
+      fontSize: "1.1rem",
+
+      fontWeight: 600,
+
+      lineHeight: 1.5,
+
+      background: `
+  radial-gradient(
+    circle at top,
+    rgba(255,255,255,0.18) 0%,
+    transparent 38%
+  ),
+
+  linear-gradient(
+    180deg,
+    rgba(52,115,196,0.95) 0%,
+    rgba(17,58,107,0.98) 42%,
+    rgba(4,16,32,1) 100%
+  )
+`,
+    }}
+  >
+    <div
+      style={{
+        fontSize: 42,
+        marginBottom: 18,
+      }}
+    >
+      ✈️
+    </div>
+
+    <div>
+      ¡Ya eres parte
+      <br />
+      de este Viaje!
+    </div>
+  </div>
 )}
   </div>
 </div>
@@ -363,11 +422,7 @@ export default function Home() {
 
             
 
-            {mensaje && (
-              <div style={successMessage}>
-                {mensaje}
-              </div>
-            )}
+           
           </div>
         </section>
 
@@ -447,18 +502,22 @@ color: "#0A2342",
         }
 
         @keyframes heroFloat {
-          0% {
-            transform: translateY(0px);
-          }
+          @keyframes particleFloat {
+  0% {
+    transform: translateY(0px);
+    opacity: 0.4;
+  }
 
-          50% {
-            transform: translateY(-8px);
-          }
+  50% {
+    transform: translateY(-20px);
+    opacity: 1;
+  }
 
-          100% {
-            transform: translateY(0px);
-          }
-        }
+  100% {
+    transform: translateY(0px);
+    opacity: 0.4;
+  }
+}
       `}</style>
     </>
   );

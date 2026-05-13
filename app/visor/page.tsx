@@ -172,13 +172,21 @@ const particleThree = {
 };
 const visorWindowFrame = {
   width: 185,
-height: 250,
+  height: 250,
+
+  marginBottom: "10px",
+
+  display: "flex",
+
+  alignItems: "stretch",
 
   borderRadius: "160px 160px 120px 120px",
 
   overflow: "hidden",
 
-  margin: "40px auto 20px auto",
+  marginLeft: "auto",
+
+marginRight: "auto",
 
   padding: 8,
 
@@ -212,6 +220,7 @@ const visorWindowInner = {
   overflow: "hidden",
 
   background: "#000",
+  position: "relative" as const,
 
   border: "10px solid rgba(210,220,235,0.55)",
 
@@ -227,6 +236,7 @@ const visorImage = {
   height: "100%",
 
   objectFit: "cover" as const,
+  display: "block",
 };
 const visorGrid = {
   display: "grid",
@@ -234,7 +244,9 @@ const visorGrid = {
   gridTemplateColumns:
     "repeat(auto-fill, minmax(185px, 1fr))",
 
-  gap: 34,
+  columnGap: 40,
+
+  rowGap: 0,
 
   padding: "45px",
 
