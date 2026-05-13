@@ -487,7 +487,7 @@ export default function Home() {
 
   opacity: 1,
 
-  fontSize: 22,
+  fontSize: "clamp(1.1rem, 4vw, 22px)",
 
   fontWeight: 700,
 
@@ -529,7 +529,7 @@ color: "#0A2342",
   alt="Airline"
 
   style={{
-    width: "220px",
+    width: "min(220px, 70vw)",
 
     display: "block",
 
@@ -571,7 +571,20 @@ color: "#0A2342",
         }
 
         @keyframes heroFloat {
-          @keyframes particleFloat {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes particleFloat {
   0% {
     transform: translateY(0px);
     opacity: 0.4;
